@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     int grid[][]={{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // assign global objects
         oneone =  findViewById(R.id.grid11);
         onetwo =  findViewById(R.id.grid12);
         onethree =  findViewById(R.id.grid13);
@@ -64,6 +66,36 @@ public class MainActivity extends AppCompatActivity {
          * if a red block is found turn boolean to false
          * if no red blocks are found boolean stays true
          * on true boolean player wins.
+         *
+         * boolean win = true;
+         * for (int y = 0; y>3; y++) {
+         *  for (int x = 0; x>3; x++) {
+         *      if grid[gridy][gridx] == 1 {win = false}
+         *  }
+         * }
+         *
+         * if win == true then {toast "you win", play again?}
+         *  ---------------- copy code
+         *  //Put up the Yes/No message box
+         *AlertDialog.Builder builder = new AlertDialog.Builder(this);
+         *builder
+         *.setTitle("Erase hard drive")
+         *.setMessage("Are you sure?")
+         *.setIcon(android.R.drawable.ic_dialog_alert)
+         *.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+         *--public void onClick(DialogInterface dialog, int which) {
+         *Yes button clicked, do something *Toast.makeText(YesNoSampleActivity.this, "Yes button pressed",
+         *Toast.LENGTH_SHORT).show();
+         *}
+         *})
+         *.setNegativeButton("No", null)						//Do nothing on no
+         *.show();
+         *-- Continue code after the Yes/No dialog
+         *-- ....
+         * ------------------------
+         * play again true setboard ();
+         * play again false exit app.
+         *
          */
     }
 
@@ -148,12 +180,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void adjacent() {
+
+        gridy -= 1;
+        if (gridy > -1) {
+            flipTiles();
+        } else {
+            gridy += 1;
+        }
+    }
+
     /** button reaction for the grid */
     public void clickMe11(View view) {
         gridx = 0;
         gridy = 0;
         flipTiles();
         winCondition();
+        // flip adjacent blocks.
     }
 
     public void clickMe12(View view) {
