@@ -102,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
     public void flipTiles() {
         //flip clicked tile
         if (grid[gridy][gridx] == 0) {
-            // mark and turn grid red
-            grid[gridy][gridx] = 1;
 
             // match the grid to the xml object
             if (gridy == 0 && gridx == 0) {
@@ -140,8 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 fourfour.setBackgroundColor(Color.parseColor("#ff0000"));
             }
         } else {
-            // mark and turn grid gray
-            grid[gridy][gridx] = 0;
 
             // match the grid to the xml object
             if (gridy == 0 && gridx == 0) {
@@ -180,127 +176,249 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void adjacent() {
-
-        gridy -= 1;
-        if (gridy > -1) {
-            flipTiles();
+    public void changeTile () {
+        if (grid[gridy][gridx] == 1) {
+            grid[gridy][gridx] = 0;
         } else {
-            gridy += 1;
+            grid[gridy][gridx] = 1;
         }
     }
+
+    public void flipRight(){
+        gridx++;
+        changeTile ();
+        flipTiles();
+        gridx--;
+    }
+    public void flipLeft(){
+        gridx--;
+        changeTile ();
+        flipTiles();
+        gridx++;
+    }
+    public void flipTop(){
+        gridy--;
+        changeTile ();
+        flipTiles();
+        gridy++;
+
+    }
+    public void flipBottom(){
+        gridy++;
+        changeTile ();
+        flipTiles();
+        gridy--;
+
+    }
+
 
     /** button reaction for the grid */
     public void clickMe11(View view) {
         gridx = 0;
         gridy = 0;
+        changeTile ();
         flipTiles();
-        winCondition();
         // flip adjacent blocks.
+        flipRight();
+        flipBottom();
+
+        winCondition();
+
     }
 
     public void clickMe12(View view) {
         gridx = 1;
         gridy = 0;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipBottom();
+
         winCondition();
     }
 
     public void clickMe13(View view) {
         gridx = 2;
         gridy = 0;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipBottom();
+
         winCondition();
     }
 
     public void clickMe14(View view) {
         gridx = 3;
         gridy = 0;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipLeft();
+        flipBottom();
+
         winCondition();
     }
 
     public void clickMe21(View view) {
         gridx = 0;
         gridy = 1;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe22(View view) {
         gridx = 1;
         gridy = 1;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe23(View view) {
         gridx = 2;
         gridy = 1;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe24(View view) {
         gridx = 3;
         gridy = 1;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipLeft();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe31(View view) {
         gridx = 0;
         gridy = 2;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe32(View view) {
         gridx = 1;
         gridy = 2;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe33(View view) {
         gridx = 2;
         gridy = 2;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe34(View view) {
         gridx = 3;
         gridy = 2;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipLeft();
+        flipBottom();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe41(View view) {
         gridx = 0;
         gridy = 3;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe42(View view) {
         gridx = 1;
         gridy = 3;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe43(View view) {
         gridx = 2;
         gridy = 3;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipRight();
+        flipLeft();
+        flipTop();
+
         winCondition();
     }
 
     public void clickMe44(View view) {
         gridx = 3;
         gridy = 3;
+        changeTile ();
         flipTiles();
+        // flip adjacent blocks.
+        flipLeft();
+        flipTop();
+
         winCondition();
     }
 
